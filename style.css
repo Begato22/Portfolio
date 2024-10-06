@@ -11,15 +11,17 @@ html {
     height: 100%;
     width: 100%;
     font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
     display: flex;
     flex-direction: column;
     background: #1c1b1b;
+    /* Keep the body background dark */
 }
 
-/* Profile Section with background image and overlay */
+/* Profile Section with Fixed Background Image */
 .container {
     position: relative;
     display: flex;
@@ -27,13 +29,17 @@ body {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    height: 100vh;
-    padding: 100px;
-    box-sizing: border-box;
+    height: 120vh;
+    /* Full height of the viewport */
+    padding: 180px;
+    box-sizing: border;
     background: url('profile-setup.jpg') no-repeat center center;
     background-size: cover;
+    background-attachment: fixed;
+    /* Keep the background fixed */
 }
 
+/* Overlay */
 .container::before {
     content: "";
     position: absolute;
@@ -46,19 +52,43 @@ body {
     z-index: 1;
 }
 
-/* Profile Picture */
+/* Profile Picture Container */
 .profile-pic {
     z-index: 2;
     /* Ensure profile picture is above the overlay */
+    transition: box-shadow 0.3s ease;
+    /* Transition for smooth shadow effect */
 }
 
+/* Profile Picture Image */
 .profile-pic img {
     border-radius: 50%;
-    margin: 75px 0px;
     width: 400px;
     height: 400px;
     object-fit: cover;
+    transition:
+        filter 1s ease,
+        /* Smooth transition for filter */
+        transform 0.3s ease,
+        /* Smooth transition for transform */
+        box-shadow 0.3s ease;
+    /* Smooth transition for shadow */
+    filter: grayscale(100%);
+    /* Default grayscale */
 }
+
+/* Hover Effect with Color Change and Shadow */
+.profile-pic:hover img {
+    filter: grayscale(0%) sepia(0.3);
+    /* Remove grayscale and add a sepia tone */
+    transform: scale(1.05);
+    /* Slightly increase size for emphasis */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Dark shadow for depth */
+}
+
+
+
 
 /* Info Section (Rounded Box with Grey Background and Opacity) */
 .info {
@@ -68,7 +98,7 @@ body {
     color: white;
     padding: 20px;
     background-color: rgba(128, 128, 128, 0.7);
-    /* Grey background with 50% opacity */
+    /* Grey background with 70% opacity */
     border-radius: 20px;
     /* Rounded corners */
     display: inline-block;
@@ -87,8 +117,6 @@ body {
     margin-top: 10px;
 }
 
-
-
 /* About Me Section */
 .about-me-section {
     width: 80vw;
@@ -103,9 +131,12 @@ body {
     display: flex;
     flex-direction: column;
     /* Change to column since there's no image */
-    align-items: flex-start;
-    /* Align text to the left */
+    align-items: center;
+    /* Center content horizontally */
+    justify-content: center;
+    /* Center content vertically */
     width: 100%;
+    /* Full width */
 }
 
 .about-title {
@@ -113,6 +144,8 @@ body {
     font-weight: bold;
     color: white;
     /* White title for contrast */
+    text-align: center;
+    /* Center the title */
 }
 
 .about-details {
@@ -120,107 +153,327 @@ body {
     font-size: 1.2rem;
     color: lightgray;
     line-height: 1.6;
+    text-align: center;
+    /* Center the details */
 }
 
-/* Total Projects Section */
+/* Projects Section */
 .projects-section {
     width: 80vw;
-    /* Set width to 80% of the viewport */
     margin: 20px auto;
-    /* Center the section with top margin */
     padding: 20px;
-    /* Add padding */
     color: white;
-    /* Text color */
 }
 
 .projects-container {
     display: flex;
-    /* Use flexbox for layout */
     justify-content: space-between;
-    /* Space between left and right sections */
+    /* Add space between image and cards */
     align-items: center;
-    /* Center items vertically */
-    width: 80%;
-    /* Take 80% of the width */
+    width: 100%;
+    /* Full width of container */
     margin: 0 auto;
-    /* Center the container */
+    /* No additional margin */
 }
+
+/* Projects Image with Hover Effects */
+/* Image Container */
+/* Image Container */
+.image-container {
+    position: relative;
+    width: 400px;
+    /* Match image width */
+    height: 400px;
+    /* Match image height */
+    overflow: hidden;
+    /* Hide overflow for overlay */
+}
+
+/* Projects Image with Normal Color */
+.projects-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    /* Smooth transitions */
+}
+
+/* Tilt Effect and Color Inversion on Hover */
+.image-container:hover .projects-image {
+    transform: scale(1.05) rotate(2deg);
+    /* Slightly zoom in and tilt */
+    filter: invert(1);
+    /* Invert colors on hover */
+}
+
+/* Overlay Styling */
+/* Overlay Styling */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black background with 50% opacity */
+    display: flex;
+    /* Use flexbox to center the content */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    border-radius: 20px;
+    /* Rounded corners */
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.3s ease;
+    /* Smooth transition */
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+    /* Show overlay on hover */
+}
+
+/* Link Styling in Overlay */
+.view-project {
+    color: white;
+    /* Text color */
+    text-decoration: none;
+    /* No underline */
+    font-size: 1.5rem;
+    /* Font size */
+    padding: 10px 20px;
+    /* Padding for the button */
+    border-radius: 10px;
+    /* Rounded corners */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Optional: background color for link */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background */
+}
+
+.view-project:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Change background color on hover */
+}
+
+/* Popular Projects Container */
+.popular-projects-container {
+    display: flex;
+    /* Use flexbox for layout */
+    flex-wrap: wrap;
+    /* Allow cards to wrap */
+    justify-content: center;
+    /* Center the cards horizontally */
+    margin: 20px auto;
+    /* Center the container */
+    width: 80vw;
+    /* Set width of the container */
+}
+
+/* Popular Project Card */
+.popular-project-card {
+    background-color: #282828;
+    /* Dark background color */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /* Shadow for depth */
+    text-align: center;
+    /* Center text */
+    margin: 15px;
+    /* Space between cards */
+    padding: 20px;
+    /* Padding inside the card */
+    cursor: pointer;
+    /* Change cursor to pointer */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transition */
+    flex: 0 1 200px;
+    /* Allow the card to shrink and set a base width */
+}
+
+/* Card Hover Effect */
+.popular-project-card:hover {
+    transform: translateY(-5px);
+    /* Lift the card slightly */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    /* Increase shadow on hover */
+}
+
+.project-logo {
+    width: 200px;
+    /* Adjust width to fit your design */
+    height: 350px;
+    /* Adjust height for a mobile logo aspect */
+    margin-bottom: 10px;
+    /* Space below the logo */
+    /* object-fit: contain; */
+    /* Ensure the logo fits within the set dimensions */
+}
+
+/* Project Name */
+.project-name {
+    font-size: 1.5rem;
+    /* Font size for project name */
+    color: white;
+    /* Text color */
+}
+
+
+
+
 
 .projects-left {
     display: flex;
-    /* Use flexbox to align cards in a row */
+    flex-direction: row;
     justify-content: flex-start;
-    /* Align the cards to the left */
-    align-items: flex-start;
-    /* Align items to the top */
+    align-items: center;
     gap: 20px;
-    /* Add space between the cards */
-    margin-left: 20px;
-    /* Optional: Add some margin to the left of the card section */
+    /* Space between the project cards */
+    margin-left: 50px;
+    /* Space between image and the cards */
 }
-
-/* Add this for spacing between the image and records */
-.projects-image {
-    margin-right: 20px;
-    /* Add space between image and records */
-    width: 400px;
-    /* Image width */
-    height: 400px;
-    /* Image height */
-    object-fit: cover;
-    /* Cover to maintain aspect ratio */
-}
-
 
 /* Card Styles */
 .projects-card {
     display: flex;
     flex-direction: column;
-    /* Arrange content vertically */
     align-items: center;
-    /* Center the count and description */
     justify-content: center;
-    /* Center content inside */
     width: 200px;
-    /* Card width */
-    height: 200px;
-    /* Card height */
+    height: 300px;
     border-radius: 20px;
-    /* Rounded corners */
     background-color: #7d7d7d;
-    /* Card background color */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    /* Softer shadow */
     text-align: center;
-    /* Center text inside */
     margin: 0;
-    /* No additional margin */
+    border: 2px solid white;
+    /* Add white border */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    /* Smooth hover effect */
 }
 
-.projects-card:hover {
-    background-color: #8c8c8c;
-    /* Change hover color to a lighter grey */
-}
-
-
-
+/* Project Count (Big and Bold) */
 .projects-count {
     font-size: 6rem;
-    /* Increased font size for total number */
+    /* Default large size */
     font-weight: bold;
-    /* Bold text */
     color: white;
-    /* Text color */
     margin: 0;
-    /* Remove default margins */
+    transition: transform 0.3s ease;
+    /* Smooth scaling effect */
 }
 
+/* Project Description (Normal size and weight) */
 .projects-description {
     font-size: 1.2rem;
-    /* Font size for "projects completed" */
+    /* Normal font size */
+    font-weight: normal;
+    /* Normal text weight */
     color: lightgray;
     /* Light gray color */
     text-align: center;
     /* Center the text */
+}
+
+
+/* Change card border on hover */
+.projects-card:hover {
+    background-color: #8c8c8c;
+    border-color: lightgray;
+    /* Change border color on hover */
+}
+
+/* Enlarge count on hover */
+.projects-card:hover .projects-count {
+    transform: scale(1.2);
+    /* Make count larger on hover */
+}
+
+/* Smart Divider */
+.smart-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    position: relative;
+    width: 80%;
+    /* Set divider width */
+}
+
+.smart-divider::before,
+.smart-divider::after {
+    content: "";
+    flex-grow: 1;
+    height: 2px;
+}
+
+.smart-divider::before {
+    margin-right: 15px;
+    background: linear-gradient(to right, transparent, white);
+    /* Left side: gradient from transparent to white */
+}
+
+.smart-divider::after {
+    margin-left: 15px;
+    background: linear-gradient(to left, transparent, white);
+    /* Right side: gradient from white to transparent */
+}
+
+.smart-divider span {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 0 10px;
+    /* Space around the text */
+}
+
+/* Social Contact Section */
+.social-contact-section {
+    text-align: center;
+    /* Center align the content */
+    padding: 50px 0;
+    /* Add padding for spacing */
+    background-color: #2a2a2a;
+    /* Dark background for contrast */
+    color: white;
+    /* White text color */
+}
+
+/* Title Style */
+.social-title {
+    font-size: 3rem;
+    /* Font size for the title */
+    margin-bottom: 30px;
+    /* Space below the title */
+}
+
+/* Social Icons Container */
+.social-icons {
+    display: flex;
+    /* Use flexbox for layout */
+    justify-content: center;
+    /* Center the icons */
+    gap: 30px;
+    /* Space between icons */
+}
+
+/* Social Icon Style */
+.social-icon {
+    display: inline-block;
+    /* Allow block-level styling */
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Transition for hover effects */
+}
+
+/* Icon Image */
+.icon {
+    width: 60px;
+    /* Adjust icon size */
+    height: 60px;
+    /* Adjust icon size */
 }

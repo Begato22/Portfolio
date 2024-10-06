@@ -30,10 +30,24 @@
                 functional applications. I enjoy learning new technologies and improving my skills.</p>
         </div>
     </div>
-
+    <!-- Divider between About Me and Projects Section -->
+    <div class="smart-divider">
+        <span>Projects</span>
+    </div>
     <div class="projects-section">
         <div class="projects-container">
-            <img class="projects-image" src="projects-image.webp" alt="Projects Image">
+            <!-- Image Container with Overlay -->
+            <div class="image-container">
+                <img class="projects-image" src="projects-image.webp" alt="Projects Image">
+                <div class="overlay">
+                    <a href="#popular-projects" class="view-project" onclick="scrollToPopularProjects()">View
+                        Project</a>
+                </div>
+            </div>
+
+
+
+
             <div class="projects-left">
                 <div class="projects-card"> <!-- First card -->
                     <h3 class="projects-count">4</h3>
@@ -50,7 +64,75 @@
             </div>
         </div>
     </div>
+    <div class="smart-divider">
+        <span>popular Projects</span>
+    </div>
+    <!-- Popular Projects Section -->
+    <div class="popular-projects-section" id="popular-projects">
+        <div class="popular-projects-container">
+            <div class="popular-project-card" data-target="popular-projects"
+                onclick="window.location='https://github.com/Begato22/pms'">
+                <img src="PlayStation-Management-System.png" alt="Project 1 Logo" class="project-logo">
+                <h3 class="project-name">PlayStation Management System</h3>
+            </div>
+            <div class="popular-project-card" data-target="popular-projects"
+                onclick="window.location='https://github.com/Begato22/valorant-app'">
+                <img src="Valorant.png" alt="Project 2 Logo" class="project-logo">
+                <h3 class="project-name">Valorant</h3>
+            </div>
+            <div class="popular-project-card" data-target="popular-projects"
+                onclick="window.location='https://github.com/Begato22/Web-Socket-Live-Chatting'">
+                <img src="Web-Socket-Live-Chatting.png" alt="Project 3 Logo" class="project-logo">
+                <h3 class="project-name">Web Socket Live Chatting</h3>
+            </div>
 
+            <div class="popular-project-card" data-target="popular-projects"
+                onclick="window.location='https://github.com/Begato22/Interactive-Avatar-Login-Screen'">
+                <img src="Interactive-Avatar-Login-Screen.png" alt="Project 3 Logo" class="project-logo">
+                <h3 class="project-name">Interactive Avatar Login Screen</h3>
+            </div>
+        </div>
+        <!-- Add more cards as needed -->
+    </div>
+    <div class="social-contact-section">
+        <div class="social-icons">
+            <a href="https://github.com/Begato22" target="_blank" class="social-icon">
+                <img src="github-icon.png" alt="GitHub" class="icon">
+            </a>
+            <a href="https://www.linkedin.com/in/eslam-nour-eldeen-9057b11aa/" target="_blank" class="social-icon">
+                <img src="linkedin-icon.webp" alt="LinkedIn" class="icon">
+            </a>
+            <a href="https://wa.me/+201201742990" target="_blank" class="social-icon">
+                <img src="whatsapp-icon.png" alt="WhatsApp" class="icon">
+            </a>
+        </div>
+    </div>
+
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select all project cards
+            const projectCards = document.querySelectorAll('.popular-project-card');
+
+            // Add click event to each card
+            projectCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const targetId = this.dataset.target; // Get the target section ID from data attribute
+                    const targetElement = document.getElementById(targetId); // Find the target section
+
+                    if (targetElement) {
+                        // Smooth scroll to the target section
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 
