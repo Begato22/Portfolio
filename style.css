@@ -54,38 +54,14 @@ body {
 
 /* Profile Picture Container */
 .profile-pic {
-    z-index: 2;
-    /* Ensure profile picture is above the overlay */
-    transition: box-shadow 0.3s ease;
-    /* Transition for smooth shadow effect */
+    
 }
 
 /* Profile Picture Image */
 .profile-pic img {
     border-radius: 10%;
     object-fit: cover;
-    transition:
-        filter 1s ease,
-        /* Smooth transition for filter */
-        transform 0.3s ease,
-        /* Smooth transition for transform */
-        box-shadow 0.3s ease;
-    /* Smooth transition for shadow */
-    filter: grayscale(100%);
-    /* Default grayscale */
 }
-
-/* Hover Effect with Color Change and Shadow */
-.profile-pic:hover img {
-    filter: grayscale(0%) sepia(0.3);
-    /* Remove grayscale and add a sepia tone */
-    transform: scale(1.05);
-    /* Slightly increase size for emphasis */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    /* Dark shadow for depth */
-}
-
-
 
 
 /* Info Section (Rounded Box with Grey Background and Opacity) */
