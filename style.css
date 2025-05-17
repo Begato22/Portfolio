@@ -63,8 +63,6 @@ body {
 /* Profile Picture Image */
 .profile-pic img {
     border-radius: 10%;
-    width: 400px;
-    height: 400px;
     object-fit: cover;
     transition:
         filter 1s ease,
