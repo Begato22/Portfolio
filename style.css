@@ -52,11 +52,6 @@ body {
     z-index: 1;
 }
 
-/* Profile Picture Container */
-.profile-pic {
-    
-}
-
 /* Profile Picture Image */
 .profile-pic img {
     border-radius: 10%;
@@ -450,4 +445,88 @@ body {
     /* Adjust icon size */
     height: 40px;
     /* Adjust icon size */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 100px 20px;
+        height: auto;
+        background-attachment: scroll;
+        /* Avoid janky scroll on mobile */
+    }
+
+    .info {
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .name {
+        font-size: 2.5rem;
+    }
+
+    .job-title {
+        font-size: 1.5rem;
+    }
+
+    .about-me-section {
+        width: 90vw;
+        padding: 30px 0;
+    }
+
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .projects-left {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 15px;
+    }
+
+    .popular-projects-container {
+        flex-direction: column;
+        align-items: center;
+        width: 90vw;
+    }
+
+    .popular-project-card,
+    .projects-card {
+        width: 90%;
+        height: auto;
+    }
+
+    .project-logo {
+        width: 100%;
+        height: auto;
+    }
+
+    .projects-count {
+        font-size: 4rem;
+    }
+
+    .projects-description {
+        font-size: 1rem;
+    }
+
+    .image-container {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .view-project {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+
+    .smart-divider span {
+        font-size: 1.2rem;
+    }
 }
