@@ -56,6 +56,8 @@ body {
 .profile-pic img {
     border-radius: 10%;
     object-fit: cover;
+    position: relative;
+    z-index: 999;
 }
 
 
@@ -72,6 +74,8 @@ body {
     /* Rounded corners */
     display: inline-block;
     /* Adjust width to fit content */
+    position: relative;
+    z-index: 1;
 }
 
 /* Name and Job Title */
